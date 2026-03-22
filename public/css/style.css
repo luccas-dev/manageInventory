@@ -68,3 +68,47 @@ header {
         }
     }
 }
+
+/* SECTION PRODUCT LIST*/
+#productList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+
+    & .product {
+        border: none;
+        border-radius: .5rem;
+        box-shadow: 1px 1px 5px #0000004f;
+
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem .7rem;
+
+        & .informations {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 1rem;
+            gap: .5rem;
+        }
+
+        & .buttons {
+            width: 60px;
+            display: flex;
+            gap: .5rem;
+            flex-flow: row wrap;
+
+            & button {
+                border: none;
+                background: transparent;
+                cursor: pointer;
+
+                & img {
+                    width: 25px;
+                }
+            }
+        }
+    }
+}
