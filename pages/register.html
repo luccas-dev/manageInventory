@@ -4,13 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CADASTRAR PRODUTOS</title>
+
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
-    <h1>CADASTRAR NOVO PRODUTO</h1>
+    <main>
+        <h1>CADASTRAR NOVO PRODUTO</h1>
+    
+        <form action="/products" method="POST">
+            <label for="productName">
+                Nome do Produto
+                <input type="text" id="productName" name="productName">
+            </label>
 
-    <form action="/products" method="POST">
-        <input type="text" id="productName" name="productName">
-        <button type="submit">Enviar</button>
-    </form>
+            <label for="markProduct">
+                Marca
+                <input type="text" id="markProduct" name="markProduct">
+            </label>
+
+            <label for="eanProduct">
+                EAN
+                <input type="text" id="eanProduct" name="eanProduct">
+            </label>
+
+            <label for="quantityStock">
+                Quantidade
+                <input type="text" id="quantityStock" name="quantityStock">
+            </label>
+
+            <section class="buttons">
+                <button type="submit">
+                    <img src="../assets/images/send_icon.png" alt="Icone de enviar">
+                    Cadastrar
+                </button>
+                <a href="/" class="button" id="btnBack">
+                    <img src="../assets/images/back_icon.png" alt="Icone de seta">
+                    Voltar
+                </a>
+            </section>
+        </form>
+    </main>
 </body>
 </html>

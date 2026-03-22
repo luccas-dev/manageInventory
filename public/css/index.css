@@ -1,18 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
-    padding: 1rem;
-    font-family: "SN Pro", sans-serif;
-}
-
-h1 {
-    text-align: center;
-}
+@import url(./global.css);
 
 header {
     display: flex;
@@ -36,29 +22,7 @@ header {
         }
     }
 
-    & button {
-        display: flex;
-        align-items: center;
-        gap: .3rem;
-
-        padding: .5rem .7rem;
-        border: none;
-        border-radius: 6rem;
-        box-shadow: 1px 2px 5px #0000004f;
-        cursor: pointer;
-
-        font-size: .8rem;
-        font-weight: 300;
-        transition: background .3s ease-in-out;
-
-        & img {
-            width: 15px;
-        }
-
-        &:hover {
-            outline: 1px solid #00000079;
-        }
-
+    & .button {
         &#btnNewProduct:hover {
             background: #8cdd8c;
         }

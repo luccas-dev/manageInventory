@@ -1,0 +1,58 @@
+@import url(./global.css);
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+
+    & label {
+        max-width: 300px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: .8rem;
+        gap: .3rem;
+
+        & input {
+            padding: .5rem;
+        }
+    }
+
+    & .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        & button {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem .7rem;
+            border: none;
+            border-radius: 6rem;
+            box-shadow: 1px 2px 5px #0000004f;
+            cursor: pointer;
+            background: transparent;
+            transition: background .3s ease-in-out;
+
+            &:hover {
+                background: #68d468;
+                outline: 1px solid #2b5a2b;
+            }
+
+            & img {
+                width: 20px;
+            }
+        }
+
+        & #btnBack {
+            transition: background .3s ease-in-out;
+
+            &:hover {
+                background: #e2dadae5;
+            }
+        }
+    }
+}
