@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Estoque</title>
+
+    <link rel="stylesheet" href="./public/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
@@ -11,8 +17,14 @@
 
         <header>
             <input type="text" name="searchBar" id="searchBar" placeholder="Digite o nome do produto...">
-            <button id="btnNewProduct">Cadastrar Produto</button>
-            <button id="btnAlert">Alertas</button>
+            <button id="btnNewProduct">
+                <img src="./public/assets/images/add_icon.png" alt="Icone de adição">
+                Novo Produto
+            </button>
+            <button id="btnAlert">
+                <img src="./public/assets/images/alert_icon.png" alt="Icone de alerta">
+                Alertas
+            </button>
         </header>
 
         <section id="productList">
