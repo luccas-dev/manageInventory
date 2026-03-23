@@ -3,6 +3,7 @@ const serviceAccount = require(process.env.KEY_ACCOUNT)
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
+    
 })
 
 const db = admin.firestore()
