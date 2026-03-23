@@ -1,6 +1,7 @@
+require('dotenv').config()
+const db = require('./src/config/firebaseConfig')
 const express = require('express')
 const path = require('path')
-require('dotenv').config()
 const productRoutes = require('./src/routes/productRoutes')
 
 const app = express()
@@ -11,6 +12,16 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'))
+})
+
+app.get('/dados', async (req, res) => {
+    const productRef = await db.collection('products').get()
+    const lista = productRef.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }))
+
+    res.json(lista)
 })
 
 app.use('/products', productRoutes)

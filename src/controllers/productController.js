@@ -2,13 +2,14 @@ const db = require('../config/firebaseConfig')
 
 exports.newProduct = async (req, res) => {
     try {
-        const {productName} = req.body
+        const {productName, markProduct, eanProduct, quantityStock} = req.body
     
         const productRef = await db.collection('products').add({
             nome: productName,
-            marca: 'TECFIL',
-            quantidade: 10,
-            EAN: 1234957382892
+            marca: markProduct,
+            quantidade: quantityStock,
+            EAN: eanProduct,
+            createDate: new Date().toLocaleDateString('pt-br', {day: '2-digit', month: '2-digit', year: 'numeric'})
         })
         console.log('Produto salvo com sucesso')
         res.redirect('/products')
