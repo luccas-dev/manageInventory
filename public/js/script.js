@@ -4,42 +4,77 @@ async function getDados() {
         const products = await response.json()
 
         products.forEach(product => {
-            console.log(product)
-
-            const lista = document.getElementById('productList')
-
-            const productContainer = document.createElement('div')
-            productContainer.classList.add('product')
-
-            const informationsContainer = document.createElement('div')
-            informationsContainer.classList.add('informations')
-
-            const productName = document.createElement('strong')
-            productName.innerHTML = product.nome
-
-            const info = document.createElement('p')
-            const quantityInfo = document.createElement('small')
-            const eanInfo = document.createElement('small')
-            const markInfo = document.createElement('small')
-
-            quantityInfo.innerHTML = `QTD: ${product.quantidade}`
-            eanInfo.innerHTML = `EAN: ${product.EAN}`
-            markInfo.innerHTML = product.marca
-
-            info.appendChild(quantityInfo)
-            info.appendChild(eanInfo)
-            info.appendChild(markInfo)
-
-            informationsContainer.appendChild(productName)
-            informationsContainer.appendChild(info)
-
-            productContainer.appendChild(informationsContainer)
-
-            lista.appendChild(productContainer)
+            createProduct(product)
         })
     } catch(error) {
         console.log('Erro: ', error)
     }
+}
+
+function createButton(btnIcon, idName, title) {
+    const btn = document.createElement('button')
+    btn.id = idName
+    btn.title = title
+
+    const icon = document.createElement('img')
+    icon.src = `./assets/images/${btnIcon}_icon.png`
+
+    btn.appendChild(icon)
+
+    return btn
+}
+
+function createInformations(product) {
+    const informationsContainer = document.createElement('div')
+    informationsContainer.classList.add('informations')
+
+    const productName = document.createElement('strong')
+    productName.innerHTML = product.nome
+
+    const info = document.createElement('p')
+    const quantityInfo = document.createElement('small')
+    const eanInfo = document.createElement('small')
+    const markInfo = document.createElement('small')
+
+    quantityInfo.innerHTML = `QTD: ${product.quantidade}`
+    eanInfo.innerHTML = `EAN: ${product.EAN}`
+    markInfo.innerHTML = product.marca
+
+    info.appendChild(quantityInfo)
+    info.appendChild(eanInfo)
+    info.appendChild(markInfo)
+
+    informationsContainer.appendChild(productName)
+    informationsContainer.appendChild(info)
+
+    return informationsContainer
+}
+
+function createProduct(product) {
+    const buttonsList = []
+    const lista = document.getElementById('productList')
+
+    const productContainer = document.createElement('div')
+    productContainer.classList.add('product')
+
+    const informationsContainer = createInformations(product)
+
+    const buttonContainer = document.createElement('div')
+    buttonContainer.classList.add('buttons')
+
+    buttonsList.push(createButton('edit', 'editProduct', 'Editar Produto'))
+    buttonsList.push(createButton('delete', 'deleteProduct', 'Deletar Produto'))
+    buttonsList.push(createButton('supply', 'supplyStock', 'Abastecer Estoque'))
+    buttonsList.push(createButton('output', 'outputProduct', 'Saida de Produto'))
+
+    buttonsList.forEach(button => {
+        buttonContainer.appendChild(button)
+    })
+
+    productContainer.appendChild(informationsContainer)
+    productContainer.appendChild(buttonContainer)
+
+    lista.appendChild(productContainer)
 }
 
 window.onload = getDados
