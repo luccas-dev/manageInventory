@@ -24,6 +24,15 @@ app.get('/dados', async (req, res) => {
     res.json(lista)
 })
 
+app.delete('/products/:id', async (req, res) => {
+    try {
+        const id = req.params.id
+        await db.collection('products').doc(id).delete()
+    } catch(error) {
+        console.log('Erro: ', error)
+    }
+})
+
 app.use('/products', productRoutes)
 
 app.use(express.json())

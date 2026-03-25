@@ -11,10 +11,13 @@ async function getDados() {
     }
 }
 
-function createButton(btnIcon, idName, title) {
+function createButton(btnIcon, idName, title, productId) {
     const btn = document.createElement('button')
     btn.id = idName
     btn.title = title
+    if(btnIcon == 'delete') {
+        btn.onclick = () => deleteProduct(productId)
+    }
 
     const icon = document.createElement('img')
     icon.src = `./assets/images/${btnIcon}_icon.png`
@@ -62,10 +65,10 @@ function createProduct(product) {
     const buttonContainer = document.createElement('div')
     buttonContainer.classList.add('buttons')
 
-    buttonsList.push(createButton('edit', 'editProduct', 'Editar Produto'))
-    buttonsList.push(createButton('delete', 'deleteProduct', 'Deletar Produto'))
-    buttonsList.push(createButton('supply', 'supplyStock', 'Abastecer Estoque'))
-    buttonsList.push(createButton('output', 'outputProduct', 'Saida de Produto'))
+    buttonsList.push(createButton('edit', 'editProduct', 'Editar Produto', product.id))
+    buttonsList.push(createButton('delete', 'deleteProduct', 'Deletar Produto', product.id))
+    buttonsList.push(createButton('supply', 'supplyStock', 'Abastecer Estoque', product.id))
+    buttonsList.push(createButton('output', 'outputProduct', 'Saida de Produto', product.id))
 
     buttonsList.forEach(button => {
         buttonContainer.appendChild(button)
@@ -75,6 +78,17 @@ function createProduct(product) {
     productContainer.appendChild(buttonContainer)
 
     lista.appendChild(productContainer)
+}
+
+function deleteProduct(id) {
+    try {
+        const response = fetch(`/products/${id}`, {
+            method: 'DELETE'
+        })
+        window.location.reload()
+    } catch(error) {
+        console.log('ERRO: ', error)
+    }
 }
 
 window.onload = getDados

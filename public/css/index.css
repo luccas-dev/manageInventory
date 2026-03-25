@@ -60,7 +60,6 @@ header {
 
         & .buttons {
             width: 60px;
-            display: flex;
             gap: .5rem;
             flex-flow: row wrap;
 
