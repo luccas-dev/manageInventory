@@ -56,6 +56,11 @@ header {
             justify-content: center;
             padding-left: 1rem;
             gap: .5rem;
+
+            & p {
+                display: flex;
+                gap: 1.5rem;
+            }
         }
 
         & .buttons {

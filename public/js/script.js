@@ -11,6 +11,17 @@ async function getDados() {
     }
 }
 
+function deleteProduct(id) {
+    try {
+        const response = fetch(`/products/${id}`, {
+            method: 'DELETE'
+        })
+        window.location.reload()
+    } catch(error) {
+        console.log('ERRO: ', error)
+    }
+}
+
 function createButton(btnIcon, idName, title, productId) {
     const btn = document.createElement('button')
     btn.id = idName
@@ -78,17 +89,6 @@ function createProduct(product) {
     productContainer.appendChild(buttonContainer)
 
     lista.appendChild(productContainer)
-}
-
-function deleteProduct(id) {
-    try {
-        const response = fetch(`/products/${id}`, {
-            method: 'DELETE'
-        })
-        window.location.reload()
-    } catch(error) {
-        console.log('ERRO: ', error)
-    }
 }
 
 window.onload = getDados
