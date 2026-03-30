@@ -11,9 +11,9 @@ async function getDados() {
     }
 }
 
-function deleteProduct(id) {
+async function deleteProduct(id) {
     try {
-        const response = fetch(`/products/${id}`, {
+        const response = await fetch(`/products/${id}`, {
             method: 'DELETE'
         })
         window.location.reload()

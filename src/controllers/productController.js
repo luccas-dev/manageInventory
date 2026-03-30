@@ -18,3 +18,13 @@ exports.newProduct = async (req, res) => {
         res.status(500).send('Erro ao salvar no banco de dados')
     }
 }
+
+exports.deleteProduct = async (req, res) => {
+    try{
+        const id = req.params.id
+        await db.collection('products').doc(id).delete()
+    } catch(error) {
+        console.log('ERRO: ', error)
+        res.status(500).send('Erro ao deletar o produto')
+    }
+}
